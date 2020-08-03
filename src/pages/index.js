@@ -1,6 +1,7 @@
 import Head from "next/head";
 import * as React from "react";
 import Countdown from "../components/countdown";
+import Jabba from "../components/jabba";
 import styles from "../styles/home.module.css";
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
             hideCountdownOnDeadlineReached
           />
         </section>
+        <Jabba />
       </main>
     </>
   );

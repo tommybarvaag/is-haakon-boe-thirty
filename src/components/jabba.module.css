@@ -1,0 +1,10 @@
+.container {
+  position: absolute;
+  right: 0;
+  bottom: -3rem;
+}
+
+.image {
+  max-width: 20rem;
+  transform: rotate(-15deg);
+}
