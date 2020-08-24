@@ -45,15 +45,24 @@ export default function BleDenbu({ assets }) {
               <Paragraph>Scroll for ei reise</Paragraph>
             </Container>
           </Container>
-          {assets.map(asset => (
-            <section className={styles.section}>
-              {asset.type === "movie" ? (
-                <Video mp4={asset.url} alt={asset.alt} caption={asset.caption} />
-              ) : (
-                <Image asset={asset} src={asset.url} alt={asset.alt} caption={asset.caption} />
-              )}
-            </section>
-          ))}
+          {assets.map((asset, index) =>
+            asset.type === "movie" ? (
+              <Video
+                key={`asset-${index}`}
+                mp4={asset.url}
+                alt={asset.alt}
+                caption={asset.caption}
+              />
+            ) : (
+              <Image
+                key={`asset-${index}`}
+                asset={asset}
+                src={asset.url}
+                alt={asset.alt}
+                caption={asset.caption}
+              />
+            )
+          )}
         </ScrollSnap>
       </main>
     </>

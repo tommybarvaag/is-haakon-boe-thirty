@@ -3,7 +3,7 @@ import styles from "./paragraph.module.css";
 
 export default function Paragraph({ children, ...other }) {
   return (
-    <p class={styles.paragraph} {...other}>
+    <p className={styles.paragraph} {...other}>
       {children}
     </p>
   );
