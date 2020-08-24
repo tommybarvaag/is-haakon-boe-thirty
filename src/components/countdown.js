@@ -1,38 +1,10 @@
 import * as React from "react";
-import { useInterval } from "../hooks/useInterval";
-import { getTimeToDeadline, leadingZero } from "../utils/dateUtils";
+import { useCountdown } from "../utils/countdownProvider";
+import { leadingZero } from "../utils/dateUtils";
 import styles from "./countdown.module.css";
 
-export default function Countdown({
-  deadlineDate = new Date(),
-  onDeadlineReached = () => {},
-  hideCountdownOnDeadlineReached
-}) {
-  const [deadlineReached, setDeadlineReached] = React.useState(false);
-  const [timeToDeadline, setTimeToDeadline] = React.useState(getTimeToDeadline(deadlineDate));
-
-  useInterval(
-    () => {
-      const timeLeft = getTimeToDeadline(deadlineDate);
-      setTimeToDeadline(timeLeft);
-
-      if (
-        timeLeft.days === 0 &&
-        timeLeft.hours === 0 &&
-        timeLeft.minutes === 0 &&
-        timeLeft.seconds === 0
-      ) {
-        setDeadlineReached(true);
-      }
-    },
-    deadlineReached ? null : 1000
-  );
-
-  React.useEffect(() => {
-    if (deadlineReached && onDeadlineReached) {
-      onDeadlineReached(deadlineReached);
-    }
-  }, [deadlineReached]);
+export default function Countdown({ hideCountdownOnDeadlineReached }) {
+  const { timeToDeadline, deadlineReached } = useCountdown();
 
   const renderCountdown = () => {
     if (hideCountdownOnDeadlineReached && deadlineReached) {
