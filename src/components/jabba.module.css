@@ -2,6 +2,7 @@
   position: absolute;
   right: 0;
   bottom: -3rem;
+  overflow: hidden;
 }
 
 .image {
