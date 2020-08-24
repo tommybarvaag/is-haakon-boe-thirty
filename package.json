@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sanity/client": "^1.150.1",
+    "@sanity/image-url": "^0.140.19",
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
