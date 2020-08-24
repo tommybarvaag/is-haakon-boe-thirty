@@ -1,15 +1,60 @@
 import * as React from "react";
+import Container from "../components/container";
+import Heading from "../components/heading";
+import Image from "../components/image";
+import Paragraph from "../components/paragraph";
+import ScrollIndicator from "../components/scroll-indicator";
 import ScrollSnap from "../components/scroll-snap";
 import Seo from "../components/seo";
+import Video from "../components/video";
 import styles from "../styles/home.module.css";
 import { getCollagePage } from "../utils/api";
 
-export default function BleDenbu({ title, assets }) {
+export default function BleDenbu({ assets }) {
   return (
     <>
       <Seo />
       <main className={styles.main}>
-        <ScrollSnap assets={assets} />
+        <ScrollSnap>
+          <Container
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              alignItems: "center"
+            }}
+          >
+            <Heading style={{ textAlign: "center" }}>Gratulerer med dagen!</Heading>
+            <Container>
+              <Paragraph style={{ textAlign: "center" }}>
+                Bensin, den nye breidda brenn, mørk fortid liggjer kaldt.
+              </Paragraph>
+              <Paragraph style={{ textAlign: "center" }}>
+                Skuggje, mi søte skuggje, til deg ser eg ikkje meir.
+              </Paragraph>
+            </Container>
+            <Container
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+                alignItems: "center"
+              }}
+            >
+              <ScrollIndicator />
+              <Paragraph>Scroll for ei reise</Paragraph>
+            </Container>
+          </Container>
+          {assets.map(asset => (
+            <section className={styles.section}>
+              {asset.type === "movie" ? (
+                <Video mp4={asset.url} alt={asset.alt} caption={asset.caption} />
+              ) : (
+                <Image asset={asset} src={asset.url} alt={asset.alt} caption={asset.caption} />
+              )}
+            </section>
+          ))}
+        </ScrollSnap>
       </main>
     </>
   );
