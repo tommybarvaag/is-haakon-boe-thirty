@@ -1,33 +1,36 @@
-import Head from "next/head";
+import Link from "next/link";
 import * as React from "react";
+import ConditionalWrapper from "../components/conditional-wrapper";
 import Countdown from "../components/countdown";
+import Heading from "../components/heading";
 import Jabba from "../components/jabba";
+import Paragraph from "../components/paragraph";
+import Seo from "../components/seo";
 import styles from "../styles/home.module.css";
+import { useCountdown } from "../utils/countdownProvider";
 
 export default function Home() {
-  const [isHaakonBoeThirty, setIsHaakonBoeThirty] = React.useState(false);
+  const { deadlineReached } = useCountdown();
 
   return (
     <>
-      <Head>
-        <title>Er Håkon Bøe tredve?</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000" />
-        <meta name="msapplication-TileColor" content="#000" />
-        <meta name="theme-color" content="#000" />
-      </Head>
+      <Seo />
       <main className={styles.main}>
         <section className={styles.container}>
-          <h1 className={styles.title}>{isHaakonBoeThirty ? "JA" : "NEI"}</h1>
-          <Countdown
-            deadlineDate={new Date(2020, 7, 26, 0, 0, 0)}
-            onDeadlineReached={() => setIsHaakonBoeThirty(true)}
-            hideCountdownOnDeadlineReached
-          />
+          <ConditionalWrapper
+            condition={deadlineReached}
+            wrapper={children => (
+              <Link href="/ble-denbu">
+                <a>
+                  {children}
+                  <Paragraph>Trykk for å opna gåva</Paragraph>
+                </a>
+              </Link>
+            )}
+          >
+            <Heading className={styles.title}>{deadlineReached ? "JA" : "NEI"}</Heading>
+            <Countdown hideCountdownOnDeadlineReached />
+          </ConditionalWrapper>
         </section>
         <Jabba />
       </main>
