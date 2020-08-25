@@ -4,14 +4,13 @@
   overflow-y: scroll;
 }
 
-@supports (scroll-snap-type: y mandatory) {
+@supports (scroll-snap-type: y mandatory) and (-webkit-appearance: none) {
   .container {
     scroll-snap-type: y mandatory;
   }
 }
 
-@supports (scroll-snap-points-y: repeat(100vh)) and (scroll-snap-destination: 0 0) and
-  (not (scroll-snap-type: y mandatory)) {
+@supports (-moz-appearance: meterbar) and (display: flex) and (not (scroll-snap-type: y mandatory)) {
   .container {
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-destination: 0 0;
