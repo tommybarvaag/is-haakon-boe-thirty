@@ -28,7 +28,7 @@ export default function BleDenbu({ assets }) {
                 alignItems: "center"
               }}
             >
-              <Heading style={{ textAlign: "center" }}>Gratulerer med dagen!</Heading>
+              <Heading style={{ textAlign: "center" }}>Gratulera med dagen!</Heading>
               <Container>
                 <Paragraph style={{ textAlign: "center" }}>
                   Bensin, den nye breidda brenn, mørk fortid liggjer kaldt.
@@ -56,6 +56,7 @@ export default function BleDenbu({ assets }) {
                   mp4={asset.url}
                   alt={asset.alt}
                   caption={asset.caption}
+                  poster={asset.poster}
                 />
               ) : (
                 <Image

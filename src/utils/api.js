@@ -16,7 +16,8 @@ export async function getCollagePage() {
         alt,
         caption,
         asset,
-        "url": asset -> url
+        "url": asset -> url,
+        poster
       }
     }|[0]`);
 }
