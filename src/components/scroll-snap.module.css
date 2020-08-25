@@ -2,7 +2,10 @@
   height: 100vh;
   width: 100vw;
   overflow-y: scroll;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-destination: 0 0;
   scroll-snap-type: y mandatory;
+  scroll-snap-type: mandatory;
 }
 
 .section {
