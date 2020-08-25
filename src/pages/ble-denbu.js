@@ -18,7 +18,7 @@ export default function BleDenbu({ assets }) {
     <>
       <Seo />
       <main className={styles.main}>
-        {true || deadlineReached ? (
+        {deadlineReached ? (
           <ScrollSnap>
             <Container
               style={{
